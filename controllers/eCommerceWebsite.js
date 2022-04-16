@@ -37,6 +37,13 @@ exports.postCart = (req, res, next) => {
     const prodId = req.body.prodId;
     const qty = req.body.quantity;
 
+    // error check!
+    if(!prodId) {
+        res.json({
+            'check': 'false'
+        });
+    }
+
     let fetchedCart;
     
     req.user.getCart()
