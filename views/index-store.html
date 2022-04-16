@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gelato Creameries®</title>
+    <link rel="stylesheet" href="../public/css/style-store.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.2/axios.min.js" defer></script>
+    <script src="../public/js/script-store.js" defer></script>
+</head>
+<body>
+    <div>
+        <a href="./index-home.html" id="a-heading"><h1 id='heading'>Gelato Creameries®</h1></a>
+    </div>
+    <div class='navigation-bar'>
+        <span>
+            <div id='nav-center'>
+                <a href='./index-home.html' id='a-home'><span id='nav-home'>HOME</span></a>
+                <a href='./index-store.html' id='a-store'><span id='nav-store'>STORE</span></a>
+                <a href='./index-about.html' id='a-about'><span id='nav-about'>ABOUT</span></a>
+            </div>
+        </span>
+        <span>
+            <div id="nav-cart">
+                <img src="../public/images/store/cart-icon.png" alt="cart">
+            </div>
+        </span>
+    </div>
+
+    <div id="cart">
+        <div>
+            <h2>CART</h2>
+        </div>
+        <div class="cart-sub-heading">
+            <ul>
+                <li>ITEM</li>
+                <li>PRICE</li>
+                <li>QUANTITY</li>
+            </ul>
+        </div>
+        <div class="cart-items">
+            <!-- ITEMS ADDED TO CART GO HERE -->
+        </div>
+        <div>
+            <div id="total">
+                <span>TOTAL AMOUNT</span><span id="rupee">₹<span id="pay-amount">0</span></span>
+            </div>
+            <button type="submit" name="purchase" id="purchase">PURCHASE</button>
+        </div>
+    </div>
+
+    <div class="notification-container">
+        
+    </div>
+
+    <div class='info'>
+        <div class='info-flyer'>
+            <h2 id="i-head">OUR PRODUCTS</h2>
+            <div id="i-products">
+                <ul id="ul-products">
+                    <li>
+                        <header>PISTACHIO GELATO</header>
+                        <div id="0">
+                            <img src="../public/images/store/pistachio gelato.jpeg" alt="">
+                            <span>₹300</span>
+                            <button type="submit" class="add-to-cart">ADD TO CART</button>
+                        </div>
+                        <p id="description"></p>
+                        <input type="text" id="product-id" name="product-id">
+                    </li>
+                    <li>
+                        <header>STRAWBERRY & PEANUT-BUTTER GELATO</header>
+                        <div id="1">
+                            <img src="../public/images/store/strawberry & peanut butter gelato.jpeg" alt="">
+                            <span>₹500</span>
+                            <button type="submit" class="add-to-cart">ADD TO CART</button>
+                        </div>
+                        <p id="description"></p>
+                        <input type="text" id="product-id" name="product-id">
+                    </li>
+                    <li>
+                        <header>MANGO CHEESECAKE GELATO</header>
+                        <div id="2">
+                            <img src="../public/images/store/mango cheesecake gelato.jpeg" alt="">
+                            <span>₹400</span>
+                            <button type="submit" class="add-to-cart">ADD TO CART</button>
+                        </div>
+                        <p id="description"></p>
+                        <input type="text" id="product-id" name="product-id">
+                    </li>
+                    <li>
+                        <header>TIRAMISU GELATO</header>
+                        <div id="3">
+                            <img src="../public/images/store/tiramisu gelato.jpeg" alt="">
+                            <span>₹270</span>
+                            <button type="submit" class="add-to-cart">ADD TO CART</button>
+                        </div>
+                        <p id="description"></p>
+                        <input type="text" id="product-id" name="product-id">
+                    </li>
+                    <li>
+                        <header>BLUEBERRY GELATO</header>
+                        <div id="4">
+                            <img src="../public/images/store/blueberry gelato.jpeg" alt="">
+                            <span>₹350</span>
+                            <button type="submit" class="add-to-cart">ADD TO CART</button>
+                        </div>
+                        <p id="description"></p>
+                        <input type="text" id="product-id" name="product-id">
+                    </li>
+                    <li>
+                        <header>DARK & WHITE CHOCOLATE GELATO</header>
+                        <div id="5">
+                            <img src="../public/images/store/dark & white chocolate gelato.jpeg" alt="">
+                            <span>₹300</span>
+                            <button type="submit" class="add-to-cart">ADD TO CART</button>
+                        </div>
+                        <p id="description"></p>
+                        <input type="text" id="product-id" name="product-id">
+                    </li>
+                    <li>
+                        <header>CARAMEL TOFFEE GELATO</header>
+                        <div id="6">
+                            <img src="../public/images/store/caramel toffee gelato.jpeg" alt="">
+                            <span>₹600</span>
+                            <button type="submit" class="add-to-cart">ADD TO CART</button>
+                        </div>
+                        <p id="description"></p>
+                        <input type="text" id="product-id" name="product-id">
+                    </li>
+                    <li>
+                        <header>A B C GELATO</header>
+                        <div id="7">
+                            <img src="" alt="">
+                            <span>₹200</span>
+                            <button type="submit" class="add-to-cart">ADD TO CART</button>
+                        </div>
+                        <p id="description"></p>
+                        <input type="text" id="product-id" name="product-id">
+                    </li>
+                    <li>
+                        <header>X Y Z GELATO</header>
+                        <div id="8">
+                            <img src="" alt="">
+                            <span>₹250</span>
+                            <button type="submit" class="add-to-cart">ADD TO CART</button>
+                        </div>
+                        <p id="description"></p>
+                        <input type="text" id="product-id" name="product-id">
+                    </li>
+                </ul>
+            </div>
+            <div class="popup-container" id="container">
+                <div class="popup">
+                    <button id="close">&times;</button>
+                </div>
+            </div>
+            <div class="page-numbers">
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-links">
+            <a href='./index-home.html' id="f-1"><span>OUR SECRET</span></a>
+            <a href='./index-home.html' id="f-2"><span>FEEDBACK</span></a>
+            <a href='./index-about.html' id="f-3"><span>CAREER</span></a>
+            <a href='./index-about.html' id="f-4"><span>COMPANY</span></a>
+        </div>
+        <hr>
+        <div class="footer-end">
+            <span id="f-e-1">© 2022 All Rights Reserved, Gelato Creameries®</span>
+            <span>
+                <div id="f-e-2">
+                    <ul>
+                        <li id="insta">
+                            <a href="">
+                                <img src="../public/images/insta-icon.png" alt="instagram">
+                            </a>
+                        </li>
+                        <li id="tweet">
+                            <a href="">
+                                <img src="../public/images/tweet-icon.png" alt="twitter">
+                            </a>
+                        </li>
+                        <li id="fb">
+                            <a href="">
+                                <img src="../public/images/fb-icon.png" alt="facebook">
+                            </a>
+                        </li>
+                        <li id="yt">
+                            <a href="">
+                                <img src="../public/images/yt-icon.png" alt="youtube">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </span>
+        </div>
+    </div>
+</body>
+</html>
