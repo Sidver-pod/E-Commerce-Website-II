@@ -208,26 +208,30 @@ document.addEventListener('DOMContentLoaded', (e) => {
                     quantity: 1
                 })
                 .then(result => {
-
-                    /* Adding Product to Cart */
-                    addToCart(item, price, 1, prodId); // item, price, quantity, id
-        
-                    /* Toast Notification */
-                    let divNotificationContainer = document.getElementsByClassName('notification-container')[0];
-                    let divContainer = document.createElement('div');
-                    let spanItemName = document.createElement('span');
-                    spanItemName.id = 'notification-item-name';
-                    spanItemName.innerText = item;
-                    let spanText = document.createElement('span');
-                    spanText.innerText = ' HAS BEEN ADDED TO CART';
-                    let divNotification = document.createElement('div');
-                    divNotification.id = 'notification';
-                    divNotification.appendChild(spanItemName);
-                    divNotification.appendChild(spanText);
-                    divContainer.appendChild(divNotification);
-                    divNotificationContainer.appendChild(divContainer);
-        
-                    setTimeout(() => divContainer.remove(), 5000);
+                    if(result.data.check === 'false') {
+                        alert(`Error! Could not add item to cart. Please refresh the page.`);
+                    }
+                    else {
+                        /* Adding Product to Cart */
+                        addToCart(item, price, 1, prodId); // item, price, quantity, id
+            
+                        /* Toast Notification */
+                        let divNotificationContainer = document.getElementsByClassName('notification-container')[0];
+                        let divContainer = document.createElement('div');
+                        let spanItemName = document.createElement('span');
+                        spanItemName.id = 'notification-item-name';
+                        spanItemName.innerText = item;
+                        let spanText = document.createElement('span');
+                        spanText.innerText = ' HAS BEEN ADDED TO CART';
+                        let divNotification = document.createElement('div');
+                        divNotification.id = 'notification';
+                        divNotification.appendChild(spanItemName);
+                        divNotification.appendChild(spanText);
+                        divContainer.appendChild(divNotification);
+                        divNotificationContainer.appendChild(divContainer);
+            
+                        setTimeout(() => divContainer.remove(), 5000);
+                    }
                 })
                 .catch(err => console.log(err));
             }
