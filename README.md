@@ -1,7 +1,7 @@
 # E-Commerce-Website-II
 - Integrated a Backend to the [E-Commerce-Website](https://github.com/Sidver-pod/E-Commerce-Website) (previous repo).
 - Created a Backend that deals with sending/retrieving data to-and-fro the MySQL database.
-- Backend (localhost) is used to create, read, update and delete from the SQL database (MySQL).
+- Backend (localhost) is used to create, read, update and delete products from the SQL database (MySQL).
 - Requests are sent from the Frontend using **Axios**. So all requests made are only from the Frontend.
 - Consists of functionalities for a single dummy User and an Admin.
 
