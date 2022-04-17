@@ -9,13 +9,13 @@
     - ### Admin Page
         - Can add new products
         - Can view, edit and delete products
-    - ### User Page
+    - ### Customer Page
         - Can view home-page, store-page & about-page
         - Can "add-to-cart" any product of choice
         - Cart showcases all the products "added-to-cart" and totals the payable bill amount; can also remove items from the Cart
 
 ## What's the website about?
-It's an 🍦 website wherein the user can add-to-cart from a selection of 🍦🍨 (flavours ranging from 🥭🧀🍰 to 🍫).
+It's a website for an 🍦 retailer wherein the user can add-to-cart from a selection of 🍦🍨 (flavours ranging from 🥭🧀🍰 to 🍫).
 
 ## Install the following
 
