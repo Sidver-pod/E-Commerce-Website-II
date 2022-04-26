@@ -228,6 +228,7 @@ body {
 
 .cart-quantity input {
     background-color: #E4D4C8;
+    border: 1px solid #E4D4C8;
     font-size: 16px;
 }
 
@@ -257,10 +258,49 @@ body {
     height: 30px;
     width: 100px;
     cursor: pointer;
+    font-size: 11px;
+    font-family: system-ui;
+}
+
+.cart-page-numbers {
+    display: flex;
+    position: absolute;
+    top: 580px;
+    box-shadow: rgba(52, 55, 65, 0.2) 0px 15px 15px 0px, rgba(52, 55, 65, 0.25) 0px 4px 8px 0px;
+    border: 1px solid rgba(0, 0, 0, 0.555);
+    background-color: rgba(0, 0, 0, 0.555);
+    border-radius: 15px;
+    padding: 5px;
+    align-items: center;
+    justify-content: center;
+    /* height: 1px;
+    width: 82%; */
+}
+
+.cart-page-numbers button {
+    width: 30px;
+    height: 30px;
+    /* flex-grow: 1; */
+    /* margin-left: 15px; */
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.555);
+    border: 1px solid rgba(0, 0, 0, 0.555);
+    border-radius: 15px;
+    color: #E4D4C8;
+    font-size: medium;
+    font-weight: 900;
+}
+
+.cart-page-numbers button.active {
+    border: 1px dashed #E4D4C8;
+    /* font-size: x-large; */
 }
 
 #total {
-    margin-top: 50px;
+    display: block;
+    position: absolute;
+    top: 630px;
+    width: 358.398px;
     border-top: 1px dashed black;
     border-bottom: 1px dashed black;
     padding-top: 25px;
@@ -273,7 +313,8 @@ body {
 }
 
 #purchase {
-    margin-top: 50px;
+    position: absolute;
+    top: 755px;
     margin-left: 13px;
     border: 1px dashed #E4D4C8;
     background-color: #18A558;
@@ -284,6 +325,7 @@ body {
     padding: 5px;
     font-weight: 900;
     font-size: large;
+    font-family: system-ui;
     cursor: pointer;
 }
 
@@ -332,7 +374,7 @@ body {
 }
 
 #i-head {
-    margin-top: -1030px;
+    margin-top: -2050px;
     font-size: 41px;
     font-weight: 900;
     color: #FBE7C6;
@@ -520,7 +562,7 @@ body {
 
 .page-numbers {
     position: absolute;
-    margin-top: 1025px;
+    margin-top: 2030px;
 }
 
 .page-numbers button {
