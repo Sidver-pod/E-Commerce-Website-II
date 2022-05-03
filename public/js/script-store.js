@@ -230,11 +230,13 @@ document.addEventListener('DOMContentLoaded', (e) => {
              }
          });
 
-         // Cart page number buttons
-         addingPageNumberButtons(numberOfPages, cartPageNumbersDiv, 1);
+         if(totalItems > 0) {
+             // Cart page number buttons
+             addingPageNumberButtons(numberOfPages, cartPageNumbersDiv, 1);
 
-         // underlining the current cart page number (subtracting 1 because array index starts from 0!)
-         cartPageNumbersDiv.children[currentCartPageNumber - 1].classList.add('active');
+             // underlining the current cart page number (subtracting 1 because array index starts from 0!)
+             cartPageNumbersDiv.children[currentCartPageNumber - 1].classList.add('active');
+         }
      })
      .catch(err => console.log(err));
     
@@ -283,11 +285,13 @@ document.addEventListener('DOMContentLoaded', (e) => {
                             let numberOfPages = Math.ceil(totalItems/ITEMS_IN_CART);
                             let cartPageNumberDiv = document.getElementsByClassName('cart-page-numbers')[0];
 
-                            // Cart page number buttons
+                            /* Cart page number buttons + Adding Product to Cart (Front-End)  => both together! */
                             addingPageNumberButtons(numberOfPages, cartPageNumberDiv, 1);
 
-                            /* Adding Product to Cart (Front-End) */
-                            addToCart(item, price, 1, prodId, totalAmount); // item, price, quantity, id
+                            /* 'ONLY FOR THE VERY FIRST ITEM IN CART' - Adding Product to Cart (Front-End) */
+                            if(totalItems === 1) {
+                                addToCart(item, price, 1, prodId, totalAmount); // item, price, quantity, id, totalAmount
+                            }
                 
                             /* Toast Notification */
                             let divNotificationContainer = document.getElementsByClassName('notification-container')[0];
@@ -550,7 +554,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
              })
              .catch(err => {
                 console.log(err);
-                alert(`Error! Could not remove the following product '${title}' from the Cart. Please refresh the page and try again.`);
+                alert(`ERROR! COULD NOT REMOVE THE FOLLOWING PRODUCT '${title}' FROM THE CART. PLEASE REFRESH THE PAGE AND TRY AGAIN.`);
              });
         }
     });
@@ -573,15 +577,34 @@ document.addEventListener('DOMContentLoaded', (e) => {
             alert('YOUR CART IS EMPTY! PLEASE CHOOSE FROM OUR SELECTION OF HAND-MADE GELATOS FIRST. ONLY THEN WILL YOU BE ALLOWED TO PROCEED TO CHECK-OUT.')
         }
         else {
-            alert('*** THANK YOU FOR MAKING A DELICIOUS PURCHASE! DO BOTHER US AGAIN! (NO-PUN-INTENDED) ***');
+            axios.post('http://localhost:3000/gelato-creameries/place-order')
+             .then(result => {
+                 if(result.data.check == 'true') {
+                     alert(`YOUR ORDER NUMBER IS #${result.data.orderNo} *** THANK YOU FOR MAKING A DELICIOUS PURCHASE! DO BOTHER US AGAIN! (NO-PUN-INTENDED) ***`);
             
-            for(let i=0; i<countOfItemsInCart; i++) {
-                divCartItems[0].children[0].remove();
-            }
-    
-            /* resetting Total Amount Sum */
-            payAmount = 0; // updating
-            document.getElementById('pay-amount').innerText = 0; // on Front-End
+                     for(let i=0; i<countOfItemsInCart; i++) {
+                         divCartItems[0].children[0].remove();
+                     }
+            
+                     /* removing cart page buttons */
+                     let cartPageNumberButtons = document.getElementsByClassName('cart-page-numbers')[0].children;
+                     for(let i=0; i<cartPageNumberButtons.length; i++) {
+                         cartPageNumberButtons[0].remove();
+                     }
+
+                     /* resetting Total Amount Sum */
+                     payAmount = 0; // updating
+                     document.getElementById('pay-amount').innerText = 0; // on Front-End
+                 }
+                 else {
+                     alert('SOMETHING WENT WRONG! TRY REFRESHING THE PAGE.');
+                 }
+             })
+             .catch(err => {
+                 console.log(err);
+                 alert(`ERROR! CLICK 'OK' TO REFRESH THE PAGE.`);
+                 location.reload();
+             });
         }
     });
 });
