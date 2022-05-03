@@ -201,3 +201,48 @@ exports.checkCartItem = (req, res, next) => {
      })
      .catch(err => console.log(err))
 };
+
+exports.postOrder = (req, res, next) => {
+    let fetchedCart, fetchedProducts, orderNo;
+
+    req.user.getCart()
+     .then(cart => {
+         fetchedCart = cart;
+         return cart.getProducts();
+     })
+     .then(products => {
+         fetchedProducts = products;
+
+         return req.user.createOrder();
+     })
+     .then(order => {
+         orderNo = order.dataValues.id; //order number
+         return order.addProducts(
+            fetchedProducts.map(product => {
+                product.orderItem = { quantity: product.cartItem.quantity };
+                return product;
+            })
+         );
+     })
+     .then(result => {
+         return fetchedCart.setProducts(null);
+     })
+     .then(result => {
+         res.json({
+             'check': 'true',
+             'orderNo': orderNo
+         });
+     })
+     .catch(err => console.log(err));
+};
+
+exports.getOrder = (req, res, next) => {
+    req.user.getOrders({ include: ['products'] })
+     .then(orders => {
+         res.json({
+             'check': 'true',
+             'orders': orders
+         });
+     })
+     .catch(err => console.log(err));
+};
