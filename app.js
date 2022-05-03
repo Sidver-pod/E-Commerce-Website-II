@@ -17,6 +17,8 @@ const Product = require('./models/product');
 const Cart = require('./models/cart');
 const CartItem = require('./models/cart-item');
 const User = require('./models/user');
+const Order = require('./models/order');
+const OrderItem = require('./models/order-item');
 
 const app = express();
 
@@ -52,11 +54,19 @@ Cart.belongsToMany(Product, { through: CartItem });
 Cart.belongsTo(User);
 User.hasOne(Cart);
 
+// #4
+Order.belongsTo(User);
+User.hasMany(Order);
+
+// #5
+Order.belongsToMany(Product, { through: OrderItem });
+Product.belongsToMany(Order, { through: OrderItem });
+
 // syncs all the models to the database; creates a 'dummy' User if not present; also creates a Cart for the User; then listens on Port No. 3000!
 sequelize.sync()
-.then(result => {
+ .then(result => {
     return User.findByPk(1);
-})
+ })
  .then(user => {
     if(!user) {
         return User.create( { username: 'Sid', email: 'sid@dummy.com' } );
