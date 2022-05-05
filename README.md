@@ -30,3 +30,5 @@ It's a website for an 🍦 retailer wherein the user can add-to-cart from a sele
 - **Sequelize** `npm install --save sequelize`
 
 - **CORS** `npm install cors`
+
+- **dotenv** `npm install dotenv --save`
