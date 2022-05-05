@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 
 const express = require('express');
 
+require('dotenv').config();
+
 const adminRoute = require('./routes/admin');
 const eCommerceWebsiteRoute = require('./routes/eCommerceWebsite');
 const errorController = require('./controllers/error');
