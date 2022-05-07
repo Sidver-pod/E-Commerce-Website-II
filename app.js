@@ -42,7 +42,7 @@ app.use('/admin', adminRoute);
 app.use('/gelato-creameries', eCommerceWebsiteRoute);
 // app.use(errorController.getError);
 app.use((req, res) => {
-   res.sendFile(path.join(__dirname, `${req.url}`)); //directs the User to the file mentioned in the URL!
+   res.sendFile(path.join(__dirname, `${req.url}`)); // sends the file from the file path mentioned in the URL to the Client!
 });
 
 /* defining table relations */
