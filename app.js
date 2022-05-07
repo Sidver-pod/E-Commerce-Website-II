@@ -40,7 +40,10 @@ app.use((req, res, next) => {
 
 app.use('/admin', adminRoute);
 app.use('/gelato-creameries', eCommerceWebsiteRoute);
-app.use(errorController.getError);
+// app.use(errorController.getError);
+app.use((req, res) => {
+   res.sendFile(path.join(__dirname, `${req.url}`)); //directs the User to the file mentioned in the URL!
+});
 
 /* defining table relations */
 
