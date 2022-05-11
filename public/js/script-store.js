@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
     let currentPageNumber = 1; // default
 
     // getting all the products!
-    axios.post('http://localhost:3000/gelato-creameries/store', {
+    axios.post('http://54.175.242.147:3000/gelato-creameries/store', {
         currentPageNumber: currentPageNumber
     })
      .then(result => {
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
                     e.target.classList.add('active');
 
-                    axios.post('http://localhost:3000/gelato-creameries/store', {
+                    axios.post('http://54.175.242.147:3000/gelato-creameries/store', {
                         currentPageNumber: parseInt(e.target.innerText)
                     })
                      .then(result => {
@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
     let currentCartPageNumber = 1; // default
     
     /* fetching all the 'cart items' into the Cart from the database */
-    axios.post('http://localhost:3000/gelato-creameries/get-cart', {
+    axios.post('http://54.175.242.147:3000/gelato-creameries/get-cart', {
         currentCartPageNumber: currentCartPageNumber
     })
      .then(result => {
@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
                 e.target.classList.add('active');
 
-                axios.post('http://localhost:3000/gelato-creameries/get-cart', {
+                axios.post('http://54.175.242.147:3000/gelato-creameries/get-cart', {
                     currentCartPageNumber: e.target.innerText
                 })
                  .then(result => {
@@ -259,7 +259,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
             let prodId = e.target.parentElement.nextElementSibling.nextElementSibling.value;
 
             /* checking if the item already exists in the Cart (database); if not then item gets added to the Cart */
-            axios.post('http://localhost:3000/gelato-creameries/check-cart', {
+            axios.post('http://54.175.242.147:3000/gelato-creameries/check-cart', {
                 prodId: prodId
             })
             .then(result => {
@@ -269,7 +269,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
                 }
                 // new item being added to the Cart
                 else {
-                    axios.post('http://localhost:3000/gelato-creameries/cart', {
+                    axios.post('http://54.175.242.147:3000/gelato-creameries/cart', {
                         prodId: prodId,
                         quantity: 1
                     })
@@ -384,7 +384,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
     }
 
     function edgeCaseAddToCart(x, y, activeCartPageNumber, pageNumberDiv) {
-        axios.post('http://localhost:3000/gelato-creameries/get-cart', {
+        axios.post('http://54.175.242.147:3000/gelato-creameries/get-cart', {
             currentCartPageNumber: x
         })
         .then(result => {
@@ -503,7 +503,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
             let quantity = e.target.value;
 
             // updating the Quantity in the Cart database (Back-End)
-            axios.post('http://localhost:3000/gelato-creameries/cart', {
+            axios.post('http://54.175.242.147:3000/gelato-creameries/cart', {
                 prodId: prodId,
                 quantity: quantity
             })
@@ -525,7 +525,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
             let title = e.target.parentElement.parentElement.firstElementChild.children[0].innerText;
 
             // removing from the Cart database (Back-End)
-            axios.post('http://localhost:3000/gelato-creameries/cart/remove', {
+            axios.post('http://54.175.242.147:3000/gelato-creameries/cart/remove', {
                 prodId: prodId
             })
              .then(result => {
@@ -577,7 +577,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
             alert('YOUR CART IS EMPTY! PLEASE CHOOSE FROM OUR SELECTION OF HAND-MADE GELATOS FIRST. ONLY THEN WILL YOU BE ALLOWED TO PROCEED TO CHECK-OUT.')
         }
         else {
-            axios.post('http://localhost:3000/gelato-creameries/place-order')
+            axios.post('http://54.175.242.147:3000/gelato-creameries/place-order')
              .then(result => {
                  if(result.data.check == 'true') {
                      alert(`YOUR ORDER NUMBER IS #${result.data.orderNo} *** THANK YOU FOR MAKING A DELICIOUS PURCHASE! DO BOTHER US AGAIN! (NO-PUN-INTENDED) ***`);
