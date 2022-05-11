@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
             else if(e.target.className === 'delete') {
                 let id = e.target.parentElement.previousElementSibling.value;
                 let title = e.target.parentElement.parentElement.previousElementSibling.innerText;
-                axios.post('http://localhost:3000/admin/delete-product', {
+                axios.post('http://54.175.242.147:3000/admin/delete-product', {
                     id: id
                 })
                  .then(result => {
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
     });
 
     // sending GET request to BACK-END to retrieve all the data from the 'Product' table
-    axios.get('http://localhost:3000/admin/view-product')
+    axios.get('http://54.175.242.147:3000/admin/view-product')
      .then(result => {
          if(result.data.check === 'true') {
              let products = result.data.products;
@@ -153,7 +153,7 @@ function updateProduct() {
     let imageURL = document.getElementById('imageURL').value;
     let description = document.getElementById('description').value;
 
-    axios.put('http://localhost:3000/admin/update-product', {
+    axios.put('http://54.175.242.147:3000/admin/update-product', {
         id: id,
         title: title,
         price: price,
