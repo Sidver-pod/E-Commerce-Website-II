@@ -31,7 +31,7 @@ function addProduct() {
     descriptionInput.value = "";
 
     // sending a POST request to the BACK-END
-    axios.post('http://localhost:3000/admin/add-product', {
+    axios.post('http://54.175.242.147:3000/admin/add-product', {
         title: title,
         imageURL: imageURL,
         price: price,
