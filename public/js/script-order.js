@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', (e) => {
-    axios.get('http://localhost:3000/gelato-creameries/get-order')
+    axios.get('http://54.175.242.147:3000/gelato-creameries/get-order')
      .then(result => {
          if(result.data.check == 'true') {
              let orders = result.data.orders;
